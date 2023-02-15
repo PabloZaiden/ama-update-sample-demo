@@ -33,13 +33,6 @@ namespace AMAUpdateSample
                 return req.CreateResponse(HttpStatusCode.BadRequest);
             }
 
-            // DEBUG! - REMOVE BEFORE PUSHING
-            if (key == "banana") {
-                _inMemoryKVS.Clear();
-                _logger.LogWarning("cleared in-memory KVS");
-                return req.CreateResponse(HttpStatusCode.Gone);
-            }
-
             var value = await req.ReadAsStringAsync();
 
             _inMemoryKVS[key] = value ?? string.Empty;
