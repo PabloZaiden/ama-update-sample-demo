@@ -2,9 +2,8 @@ param location string = resourceGroup().location
 
 var prefix = 'app${uniqueString(subscription().id, resourceGroup().name)}'
 
-var dockerRegistry = 'mcr.microsoft.com'
-var dockerImageFullName = '${dockerRegistry}/azure-functions/dotnet:4-appservice-quickstart'
-
+var dockerRegistry = 'ghcr.io'
+var dockerImageFullName = '${dockerRegistry}/pablozaiden/ama-update-sample-demo-kvs:kvs-v1'
 
 resource appStorage 'Microsoft.Storage/storageAccounts@2022-05-01' = {
   kind: 'Storage'
