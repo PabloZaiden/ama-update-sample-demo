@@ -19,6 +19,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "webhook", "publisher\webhoo
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "utils", "utils\utils.csproj", "{F54E2300-CDE9-4340-9660-C285EC5ECE67}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "kvs", "kvs\kvs.csproj", "{BB0F3FAE-BC6D-4DF7-9740-6725451FED5E}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -52,6 +54,10 @@ Global
 		{F54E2300-CDE9-4340-9660-C285EC5ECE67}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{F54E2300-CDE9-4340-9660-C285EC5ECE67}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{F54E2300-CDE9-4340-9660-C285EC5ECE67}.Release|Any CPU.Build.0 = Release|Any CPU
+		{BB0F3FAE-BC6D-4DF7-9740-6725451FED5E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{BB0F3FAE-BC6D-4DF7-9740-6725451FED5E}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{BB0F3FAE-BC6D-4DF7-9740-6725451FED5E}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{BB0F3FAE-BC6D-4DF7-9740-6725451FED5E}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(NestedProjects) = preSolution
 		{0E13A40C-09DC-42A5-B0C3-3BB5C5A72031} = {3F362C26-0012-48BE-AF23-74E2D37FA168}
