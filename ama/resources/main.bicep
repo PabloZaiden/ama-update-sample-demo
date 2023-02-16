@@ -3,7 +3,7 @@ param location string = resourceGroup().location
 var prefix = 'app${uniqueString(subscription().id, resourceGroup().name)}'
 
 var dockerRegistry = 'ghcr.io'
-var dockerImageFullName = '${dockerRegistry}/pablozaiden/ama-update-sample-demo-kvs:kvs-v1'
+var dockerImageFullName = '${dockerRegistry}/pablozaiden/ama-update-sample-demo-kvs:kvs-v2'
 
 resource appStorage 'Microsoft.Storage/storageAccounts@2022-05-01' = {
   kind: 'Storage'
