@@ -63,5 +63,16 @@ namespace AMAUpdateSample
                 return req.CreateResponse(HttpStatusCode.NotFound);
             }
         }
+    
+        [Function("version")]
+        public HttpResponseData Version([HttpTrigger(AuthorizationLevel.Anonymous, "get")] HttpRequestData req)
+        {
+            _logger.LogInformation("VERSION invoked");
+
+            var response = req.CreateResponse(HttpStatusCode.OK);
+            response.Body = new MemoryStream(Encoding.UTF8.GetBytes("v1"));
+
+            return response;
+        }
     }
 }
