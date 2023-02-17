@@ -70,7 +70,7 @@ namespace AMAUpdateSample
             _logger.LogInformation("VERSION invoked");
 
             var response = req.CreateResponse(HttpStatusCode.OK);
-            response.Body = new MemoryStream(Encoding.UTF8.GetBytes("v1"));
+            response.Body = new MemoryStream(Encoding.UTF8.GetBytes("v2"));
 
             return response;
         }
