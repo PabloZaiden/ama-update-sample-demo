@@ -1,0 +1,99 @@
+Demo:
+	- Create the required infra for the managed apps
+		- Key vault, for secure secrets sharing with AMA
+		- Container Registry
+		- Some form of database, to keep track of AMAs
+		- Functions:
+			- Webhook, to listen to the AMA service updates
+			- SetCommandUrl, to establish the secure channel
+			- Events, to store events coming from the AMA
+			- Deployment, to deploy the actual applications inside the AMAs, via the secure channel
+
+	- Create the Baseline Resources inside AMA
+		- Key Vault, linked to the publisher key vault to establish secure communication channel
+		- Commands function, to receive commands from the publisher
+		- Container instance, to execute the actual app deployments
+
+	- Finally, create the actual app
+		- Goto branch kvs-v1
+		- KVS function with 3 endpoints
+			- set
+			- get
+			- version
+		- Show the "ama/resources" folder to show what's going to be deployed.
+
+	- Show how to deploy a new AMA (name ama-empty)
+	- Go to kvs-empty and show
+		- general data
+		- Managed resource group
+		- Resources like functions, identity and ACI in managed resource group
+
+	- Trigger an update for kvs-v1
+		- Look for appid in cosmos
+		- Look for deployment function URL 
+		- invoke with payload:
+			{
+				"applicationId": "...",
+				"image": "ghcr.io/pablozaiden/ama-update-sample-demo-resources:kvs-v1"
+			}
+		- Go inside MRG and show that ACI started running
+		- Go to kvs-with-v1 and show results
+
+	- Test kvs-v1 api
+		- Go to MRG, to the exposed function and get the URL
+		- Invoke Version API
+			GET https://.../api/version
+
+		- Invoke SET API
+			POST https://.../api/set?key=foo
+
+			bar
+
+		- Invoke GET API
+			GET https://.../api/get?key=foo
+
+
+		- Trigger error:
+			POST https://.../api/set?key=banana
+
+			punch
+
+		- Verify error:
+			GET https://.../api/get?key=banana
+
+
+	- Show fix in repo (branch kvs-v2)
+
+	- Trigger an update for kvs-v2
+		- Look for appid in cosmos
+		- Look for deployment function URL 
+		- invoke with payload:
+			{
+				"applicationId": "...",
+				"image": "ghcr.io/pablozaiden/ama-update-sample-demo-resources:kvs-v2"
+			}
+		- Go inside MRG and show that ACI started running
+		- Go to kvs-with-v2 and show results
+
+
+	- Test kvs-v2 api
+		- Go to MRG, to the exposed function and get the URL
+		- Invoke Version API
+			GET https://.../api/version
+
+		- Invoke SET API
+			POST https://.../api/set?key=foo
+
+			bar
+
+		- Invoke GET API
+			GET https://.../api/get?key=foo
+
+
+		- Try to trigger error:
+			POST https://.../api/set?key=banana
+
+			punch
+
+		- Verify error is not present anymore:
+			GET https://.../api/get?key=banana
