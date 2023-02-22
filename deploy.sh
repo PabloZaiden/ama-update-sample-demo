@@ -72,7 +72,7 @@ if [ -z "$NO_REDEPLOY" ]; then
     info "Deploying bicep file..."
     az deployment sub create \
         --no-prompt \
-        --name "ama-update-sample" \
+        --name "ama-update-sample-$LOCATION" \
         --location $LOCATION \
         --template-file ./publisher/iac/main.bicep \
         --parameters \
@@ -83,11 +83,11 @@ if [ -z "$NO_REDEPLOY" ]; then
 fi
 
 # get output from deployment
-prefix=$(az deployment sub show --name "ama-update-sample" --query properties.outputs.prefix.value -o tsv)
+prefix=$(az deployment sub show --name "ama-update-sample-$LOCATION" --query properties.outputs.prefix.value -o tsv)
 
 info "Prefix: $prefix"
 
-tag=$(az deployment sub show --name "ama-update-sample" --query properties.outputs.tag.value -o tsv)
+tag=$(az deployment sub show --name "ama-update-sample-$LOCATION" --query properties.outputs.tag.value -o tsv)
 
 info "Tag: $tag"
 
@@ -192,7 +192,7 @@ appDefinitionFullUrl="${appDefinitionUrl}?${blobQuerystring}"
 info "Deploying the Azure Managed App..."
 
 az deployment group create \
-    --name "ama-update-sample-definition" \
+    --name "ama-update-sample-definition-$LOCATION" \
     --resource-group $RESOURCE_GROUP_NAME \
     --template-file ./ama-definition-deploy.json \
     --parameters \
