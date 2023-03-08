@@ -1,0 +1,11 @@
+# POST https://[name].azurewebsites.net/api/set?key=foo
+
+# bar
+
+# GET https://[name].azurewebsites.net/api/get?key=ping
+
+#GET https://[name].azurewebsites.net/api/version
+
+# POST https://[name].azurewebsites.net/api/set?key=banana
+
+# punch

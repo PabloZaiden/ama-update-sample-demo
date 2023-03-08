@@ -1,0 +1,6 @@
+POST https://[name].azurewebsites.net/api/deployment?code=[code]
+
+{
+    "applicationId": "...",
+    "image": "ghcr.io/pablozaiden/ama-update-sample-demo-resources:kvs-v1"
+}
